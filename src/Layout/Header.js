@@ -30,7 +30,7 @@ const Header = () => {
         <div className="app-brand demo">
           <a href="/" className="app-brand-link">
             <span className="app-brand-text demo menu-text fw-bolder ms-0">
-              ConnectWithRMT
+              Insurance Project
             </span>
           </a>
           <a
