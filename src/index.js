@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Components/Login";
 import AddAdmins from "./Components/Admins/AddAdmins";
 import ViewAdmins from "./Components/Admins/ViewAdmins";
+import VerifyAgents from "./Components/Agents/VerifyAgents";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -17,6 +18,7 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/Add-Admins" element={<AddAdmins />} />
         <Route path="/View-Admins" element={<ViewAdmins />} />
+        <Route path="/verifyAgents" element={<VerifyAgents />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

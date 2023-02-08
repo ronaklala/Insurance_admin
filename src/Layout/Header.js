@@ -98,6 +98,13 @@ const Header = () => {
                 </a>
               </li>
 
+              <li className="menu-item">
+                <a href="/VerifyAgents" className="menu-link">
+                  <House size={22} className="menu-icon" />
+                  <div data-i18n="Analytics">Verify Insurance Agents</div>
+                </a>
+              </li>
+
               <li className="menu-item tag">
                 <a
                   href="#/"
