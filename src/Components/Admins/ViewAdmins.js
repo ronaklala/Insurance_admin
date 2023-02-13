@@ -37,9 +37,7 @@ const ViewAdmins = () => {
                 ) : (
                   <>
                     <h4 className="fw-bold py-3 mb-4">
-                      <span className="text-muted fw-light">
-                        {process.env.REACT_APP_NAME} /
-                      </span>{" "}
+                      <span className="text-muted fw-light">APP_NAME /</span>{" "}
                       Admins
                     </h4>
                     {/* Examples */}

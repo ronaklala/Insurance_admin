@@ -46,9 +46,11 @@ const VerifyAgents = () => {
                                 <b>Email :</b>
                                 <p className="card-text">{agent.email}</p>
                                 <div className="row">
-                                  <button className="btn btn-primary">
-                                    View
-                                  </button>
+                                  <a href={"/verify/agent/" + agent._id}>
+                                    <button className="btn btn-primary">
+                                      View
+                                    </button>
+                                  </a>
                                 </div>
                               </div>
                             </div>

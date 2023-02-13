@@ -61,7 +61,7 @@ const Header = () => {
             <div className="app-brand demo">
               <a href="/" className="app-brand-link">
                 <span className="app-brand-text demo menu-text fw-bolder ms-0">
-                  LameFame
+                  APP_NAME
                 </span>
               </a>
               <a
@@ -102,6 +102,13 @@ const Header = () => {
                 <a href="/VerifyAgents" className="menu-link">
                   <House size={22} className="menu-icon" />
                   <div data-i18n="Analytics">Verify Insurance Agents</div>
+                </a>
+              </li>
+
+              <li className="menu-item">
+                <a href="/users" className="menu-link">
+                  <House size={22} className="menu-icon" />
+                  <div data-i18n="Analytics">Users</div>
                 </a>
               </li>
 
