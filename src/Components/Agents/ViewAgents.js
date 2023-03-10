@@ -3,20 +3,15 @@ import React, { useEffect, useState } from "react";
 import Header from "../../Layout/Header";
 import Nav from "../../Layout/Nav";
 
-const ViewUsers = () => {
+const ViewAgents = () => {
+  const [agents, setAgents] = useState();
+
   const [loading, setLoading] = useState(true);
 
-  const [users, setUsers] = useState();
-
   useEffect(() => {
-    axios.get("http://localhost:5000/view-users").then((res) => {
-      if (res.data.length === 0) {
-        setUsers(null);
-        setLoading(false);
-      } else {
-        setUsers(res.data);
-        setLoading(false);
-      }
+    axios.get("http://localhost:5000/agents/get").then((res) => {
+      setAgents(res.data);
+      setLoading(false);
     });
   }, []);
 
@@ -32,28 +27,42 @@ const ViewUsers = () => {
                 <div className="row">
                   {loading === true ? (
                     <>
-                      <h2>Loading Users.....</h2>
+                      <h2>Loading Agents.....</h2>
                     </>
                   ) : (
                     <>
-                      {users === null ? (
+                      {agents === null ? (
                         <>
-                          <h2>No Users Found Till Now</h2>
+                          <h2>No agents Found Till Now</h2>
                         </>
                       ) : (
                         <>
-                          {users.map((u, i) => (
+                          {agents.map((u, i) => (
                             <>
                               <div className="col-md-6 col-lg-4 mb-3">
                                 <div className="card h-80">
                                   <div className="card-body">
                                     <h5 className="card-title">{u.name}</h5>
-                                    <b>Email :</b>
+                                    <b>Agent Email :</b>
                                     <p className="card-text">{u.email}</p>
-                                    <b>Phone Number :</b>
+                                    <b>Agent Phone Number :</b>
                                     <p className="card-text">{u.phone}</p>
-                                    <b>City :</b>
+                                    <b>Agent City :</b>
                                     <p className="card-text">{u.city}</p>
+                                    <b>Insurance Category :</b>
+                                    <p className="card-text">{u.category}</p>
+                                    <b>Insurance Type :</b>
+                                    <p className="card-text">{u.type}</p>
+                                    <b>Available Credits :</b>
+                                    <p className="card-text">{u.credit}</p>
+                                    <b>Is Verified Agent?</b>
+                                    <p className="card-text">
+                                      {u.is_verified === 1 ? (
+                                        <>Yes</>
+                                      ) : (
+                                        <>No / Pending</>
+                                      )}
+                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -73,4 +82,4 @@ const ViewUsers = () => {
   );
 };
 
-export default ViewUsers;
+export default ViewAgents;

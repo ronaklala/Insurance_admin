@@ -10,6 +10,8 @@ import ViewAdmins from "./Components/Admins/ViewAdmins";
 import VerifyAgents from "./Components/Agents/VerifyAgents";
 import VerifySingleAgent from "./Components/Agents/VerifySingleAgent";
 import ViewUsers from "./Components/Users/ViewUsers";
+import ViewAgents from "./Components/Agents/ViewAgents";
+import Payments from "./Components/Payments";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +24,8 @@ root.render(
         <Route path="/View-Admins" element={<ViewAdmins />} />
         <Route path="/verifyAgents" element={<VerifyAgents />} />
         <Route path="/verify/agent/:id" element={<VerifySingleAgent />} />
+        <Route path="/Payments" element={<Payments />} />
+        <Route path="/ViewAgents" element={<ViewAgents />} />
         <Route path="/users" element={<ViewUsers />} />
       </Routes>
     </BrowserRouter>
