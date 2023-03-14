@@ -43,7 +43,6 @@ const AddAdmins = () => {
       await axios
         .post(process.env.REACT_APP_API + "admin/add", admin, axiosConfig)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             toast.success("Data Added Succuessfully");
             setTimeout(() => {
@@ -52,7 +51,7 @@ const AddAdmins = () => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          toast.error("Internal Server Error");
         });
     }
   };

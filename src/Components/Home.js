@@ -7,10 +7,12 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/admin/home").then((res) => {
-      setData(res.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://insurance-api-five.vercel.app/admin/home")
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      });
   }, []);
 
   return (

@@ -10,10 +10,12 @@ const Payments = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/admins/payments/get").then((res) => {
-      setPayments(res.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://insurance-api-five.vercel.app/admins/payments/get")
+      .then((res) => {
+        setPayments(res.data);
+        setLoading(false);
+      });
   }, []);
 
   return (

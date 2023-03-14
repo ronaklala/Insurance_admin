@@ -9,7 +9,9 @@ const VerifyAgents = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/agent/get_agents_data_no_verification")
+      .get(
+        "https://insurance-api-five.vercel.app/agent/get_agents_data_no_verification"
+      )
       .then((res) => {
         setAgents(res.data);
         setLoading(false);

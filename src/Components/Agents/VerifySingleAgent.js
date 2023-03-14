@@ -15,7 +15,9 @@ const VerifySingleAgent = () => {
   const handleApprove = () => {
     axios
       .post(
-        "http://localhost:5000/agent/update_agent/" + params.id + "/approve"
+        "https://insurance-api-five.vercel.app/agent/update_agent/" +
+          params.id +
+          "/approve"
       )
       .then((res) => {
         toast.success("Id Updated Successfully");
@@ -24,14 +26,16 @@ const VerifySingleAgent = () => {
         }, 500);
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Internal Server Error");
       });
   };
 
   const handleDecline = () => {
     axios
       .post(
-        "http://localhost:5000/agent/update_agent/" + params.id + "/decline"
+        "https://insurance-api-five.vercel.app/agent/update_agent/" +
+          params.id +
+          "/decline"
       )
       .then((res) => {
         toast.success("Id Updated Successfully");
@@ -43,7 +47,10 @@ const VerifySingleAgent = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/agent/get_single_agent/" + params.id)
+      .get(
+        "https://insurance-api-five.vercel.app/agent/get_single_agent/" +
+          params.id
+      )
       .then((res) => {
         if (res.data === null) {
           window.location.href = "/danger";

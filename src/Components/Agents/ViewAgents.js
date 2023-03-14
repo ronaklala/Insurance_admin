@@ -9,10 +9,12 @@ const ViewAgents = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/agents/get").then((res) => {
-      setAgents(res.data);
-      setLoading(false);
-    });
+    axios
+      .get("https://insurance-api-five.vercel.app/agents/get")
+      .then((res) => {
+        setAgents(res.data);
+        setLoading(false);
+      });
   }, []);
 
   return (

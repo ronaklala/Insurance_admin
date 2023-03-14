@@ -9,15 +9,17 @@ const ViewUsers = () => {
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/view-users").then((res) => {
-      if (res.data.length === 0) {
-        setUsers(null);
-        setLoading(false);
-      } else {
-        setUsers(res.data);
-        setLoading(false);
-      }
-    });
+    axios
+      .get("https://insurance-api-five.vercel.app/view-users")
+      .then((res) => {
+        if (res.data.length === 0) {
+          setUsers(null);
+          setLoading(false);
+        } else {
+          setUsers(res.data);
+          setLoading(false);
+        }
+      });
   }, []);
 
   return (
