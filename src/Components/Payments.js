@@ -5,9 +5,20 @@ import Header from "../Layout/Header";
 import Nav from "../Layout/Nav";
 
 const Payments = () => {
-  const [payment, setPayments] = useState();
+  const [payment, setPayments] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCuurentPage] = useState(1);
+  const recordsperPage = 13;
+  const lastIndex = currentPage * recordsperPage;
+  const firstIndex = lastIndex - recordsperPage;
+
+  const records = payment.slice(firstIndex, lastIndex);
+
+  const pages = Math.ceil(payment.length / recordsperPage);
+
+  const numbers = [...Array(pages + 1).keys()].slice(1);
 
   useEffect(() => {
     axios
@@ -17,6 +28,22 @@ const Payments = () => {
         setLoading(false);
       });
   }, []);
+
+  const nextPage = () => {
+    if (currentPage !== pages) {
+      setCuurentPage(currentPage + 1);
+    }
+  };
+
+  const prePage = () => {
+    if (currentPage !== 1) {
+      setCuurentPage(currentPage - 1);
+    }
+  };
+
+  const changePage = (n) => {
+    setCuurentPage(n);
+  };
 
   return (
     <>
@@ -40,32 +67,95 @@ const Payments = () => {
                         </>
                       ) : (
                         <>
-                          {payment.map((u, i) => (
-                            <>
-                              {u.agent_details.map((a, i) => (
+                          <div className="pagination">
+                            <ul
+                              style={{
+                                display: "flex",
+                                listStyle: "none",
+                                gap: "15px",
+                              }}
+                            >
+                              <li>
+                                <a
+                                  href="#/"
+                                  className="btn btn-primary"
+                                  onClick={prePage}
+                                >
+                                  Prev
+                                </a>
+                              </li>
+                              {numbers.map((n, i) => (
                                 <>
-                                  <div className="col-md-6 col-lg-4 mb-3">
-                                    <div className="card h-80">
-                                      <div className="card-body">
-                                        <b>Agent Email :</b>
-                                        <p className="card-text">{a.email}</p>
-                                        <b>Agent Phone Number :</b>
-                                        <p className="card-text">{a.phone}</p>
-                                        <b>Agent Name :</b>
-                                        <p className="card-text">{a.name}</p>
-                                        <b>Plan Purchased :</b>
-                                        <p className="card-text">{u.plan}</p>
-                                        <b>Puchased On :</b>
-                                        <p className="card-text">
-                                          {moment(u.createdAt).format("LL")}
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <li key={i}>
+                                    <a
+                                      href="#/"
+                                      className="btn btn-secondary"
+                                      onClick={() => {
+                                        changePage(n);
+                                      }}
+                                    >
+                                      {n}
+                                    </a>
+                                  </li>
                                 </>
                               ))}
-                            </>
-                          ))}
+                              <li>
+                                <a
+                                  href="#/"
+                                  className="btn btn-primary"
+                                  onClick={nextPage}
+                                >
+                                  Next
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="card">
+                            <h5 className="card-header">Table Basic</h5>
+                            <div className="table-responsive text-nowrap">
+                              <table className="table">
+                                <thead>
+                                  <tr>
+                                    <th>Agent name</th>
+                                    <th>Agent Email</th>
+                                    <th>Plan Purchased</th>
+                                    <th>Agent Phone number</th>
+                                    <th>Purchased On</th>
+                                  </tr>
+                                </thead>
+                                <>
+                                  {records.map((u, i) => (
+                                    <>
+                                      {u.agent_details.map((a, i) => (
+                                        <>
+                                          {console.log(records)}{" "}
+                                          <tbody className="table-border-bottom-0">
+                                            <tr>
+                                              <td>
+                                                <i className="fab fa-angular fa-lg text-danger me-3" />{" "}
+                                                <strong>{a.name}</strong>
+                                              </td>
+                                              <td>{a.email}</td>
+
+                                              <td>
+                                                <span className="badge bg-label-primary me-1">
+                                                  {u.plan}
+                                                </span>
+                                              </td>
+                                              <td>{a.phone}</td>
+                                              <td>
+                                                {moment(u.createdAt).fromNow()}
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </>
+                                      ))}
+                                    </>
+                                  ))}
+                                </>
+                              </table>
+                            </div>
+                          </div>
                         </>
                       )}
                     </>
